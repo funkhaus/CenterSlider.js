@@ -1,0 +1,133 @@
+<html>
+    <head>
+        <title>Basic centerSlider Example</title>
+        <style>
+            /* Some basic styles */
+            body, html {
+                margin: 0;
+                height: 100%;
+                overflow: hidden;
+            }
+            #container {
+                width: calc(100% * 4);
+                min-height: 100%;
+                height: 100%;
+                overflow: hidden;
+                transition: transform 0.4s;
+            }
+            .spacer {
+                height: 100vh;
+                float: left;
+            }
+            .slide {
+                height: 100vh;
+                display: flex;
+                text-align: center;
+                float: left;
+            }
+            .slide .image {
+                background-color: #f1f1f1;
+                height: 80px;
+                width: 300px;
+                display: flex;
+                margin: auto;
+            }
+            .slide span {
+                color: #222;
+                margin: auto;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div id="container">
+            <div class="spacer"></div>
+            <div class="slide" style="background: #666A86;">
+                <div class="image">
+                    <span>Slide 1</span>
+                </div>
+            </div>
+            <div class="slide" style="background: #92B6B1;">
+                <div class="image">
+                    <span>Slide 2</span>
+                </div>
+            </div>
+            <div class="slide" style="background: #B2C9AB;">
+                <div class="image">
+                    <span>Slide 3</span>
+                </div>
+            </div>
+            <div class="slide" style="background: #E8DDB5;">
+                <div class="image">
+                    <span>Slide 4</span>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="centerSlider.js"></script>
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+
+                var X, Z;
+                var translate = 0;
+                var current = 0;
+                
+                function setSizes(){
+                    // window width
+                    var WW = $(window).width();
+                
+                    // object width
+                    var OW = 300;
+                
+                    // peek width
+                    var PW = 50;
+                
+                    // formula to solve slide width
+                    X = ((WW - (PW * 2) - OW) / 2) + OW;
+                
+                    // solve spacer width
+                    Z = (WW - X) / 2;
+                
+                    // set slide width
+                    $('.slide').width(X);
+                
+                    // set spacer width (this could be margin-left of first slide)
+                    $('.spacer').width(Z);
+                
+                    translate = 0 - (current * X);
+                    $('#container').css('transform', 'translateX(' + translate + 'px)');
+                }
+                
+                // init slideshow controls
+                $(document).keydown(function(e) {
+                    switch(e.which) {
+                        case 37: // left
+                		$('#container').css('transform', 'translateX(' + (translate + X) + 'px)');
+                		translate = translate + (X);
+                            current--;
+                        break;
+                
+                        case 39: // right
+                			$('#container').css('transform', 'translateX(' + (translate - X) + 'px)');
+                            translate = translate - (X);
+                            current++;
+                        break;
+                
+                        default: return;
+                    }
+                    e.preventDefault();
+                });
+                
+                setSizes();
+                $(window).resize(function(){
+                	setSizes();
+                });
+
+            });
+
+        </script>
+    </body>
+</html>
