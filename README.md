@@ -1,7 +1,7 @@
 # CenterSlider.js
 A barebones jQuery plugin for making slideshows that center. Specifically slideshow that have next and previous previews on either side, like this:
 
-![alt tag](http://labs.funkhausdesign.com/examples/centerSlider-js/images/slideshow-preview.png)
+![slideshow-image](https://cloud.githubusercontent.com/assets/6475336/10522133/655e19aa-7328-11e5-9277-4e51e6d0e96b.png)
 
 ## How Do I Use It?
 Include jQuery 1.7+ and centerSlider.js on your site and run it on a slideshow container with `centerSlider()`.
