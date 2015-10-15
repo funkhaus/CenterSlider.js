@@ -36,7 +36,17 @@ Include jQuery 1.7+ and centerSlider.js on your site and run it on a slideshow c
 
 This will wrap the `.slide` divs in `div.centerslide-wrapper`, size the `.slides` accordingly and set up some listeners to move the slides back and forth in a slideshow.
 
-check out [example.html](/example.html) for a more complete picture.
+##### Markup Requirements:
+
+It is important to know that in order for the plugin to work properly it will need the right html markup in place: 
+
+1. There will be one __containing__ element that the `centerSlider()` gets called on, `#slideshow` in the example above. 
+
+1. Within the container will be all the main __slide__ elements that will be used to space the slideshow out, `.slide` in the example. 
+
+1. Within each slide element will be a main __object__ element, which you will need to make sure is centered horizontally within the its slide. In the example above `.object` is the object element.
+
+check out [this simple demo](http://labs.funkhausdesign.com/examples/centerSlider-js/) for a more complete picture. Then look at the [example.html](/example.html) source.
 
 
 ## centerSlider()
