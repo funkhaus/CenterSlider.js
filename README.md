@@ -113,12 +113,12 @@ The object is the element that will peek in from the sides of the slideshow.
 
 ##### peekWidth
 
-Default: 50
+Default: `50`
 
 A integer value representing the amount of pixels that each object should be "peeking in" from the sides.
 
 ##### easing
 
-Default: 'swing'
+Default: `'swing'`
 
 The type of easing to use for the slideshow. Any valid [velocity.js easing option](http://julian.com/research/velocity/#easing) will work here.
