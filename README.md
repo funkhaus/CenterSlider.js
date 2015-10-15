@@ -51,7 +51,21 @@ check out [this simple demo](http://labs.funkhausdesign.com/examples/centerSlide
 
 ## centerSlider()
 
-The `centerSlider()` function gets called on the containing element, which will determine the overall with of the slideshow. The function has one parameter, an object containing valid options:
+The `centerSlider()` function gets called on the containing element, which will determine the overall with of the slideshow. The function has one parameter, an object containing valid options. Here are the defaults:
+
+```js
+$('#slideshow').centerSlider({
+        clickNavigation:    true,
+        arrowKeys:          true,
+        before:             null,
+        after:              null,
+        speed:              800,
+        slide:              '.slide',
+        object:             '.object',
+        peekWidth:          50,
+        easing:             'swing'
+    });
+```
 
 ##### clickNavigation
 
