@@ -122,3 +122,22 @@ A integer value representing the amount of pixels that each object should be "pe
 Default: `'swing'`
 
 The type of easing to use for the slideshow. Any valid [velocity.js easing option](http://julian.com/research/velocity/#easing) will work here.
+
+## Events
+
+You can also fire events on the main container after the slideshow has been set up to trigger functionality. An event is fired like this:
+
+```js
+var $slideshow = $('#container').centerSlider();
+
+// trigger event
+$slideshow.trigger('next-slide');
+```
+
+##### prev-slide
+
+Triggers the slideshow to move to the previous slide. If the slideshow is currently on the first slide then this event will do nothing.
+
+##### next-slide
+
+Triggers the slideshow to move to the next slide. If the slideshow is currently on the last slide then this event will do nothing.
