@@ -197,13 +197,13 @@
     $.fn.centerSlider.defaults = {
         clickNavigation:    true,
         arrowKeys:          true,
-        after:              null,
         before:             null,
+        after:              null,
         delay:              0,
         speed:              800,
         timeout:            4000,
-        object:             '.object',
         slide:              '.slide',
+        object:             '.object',
         peekWidth:          50,
         easing:             'swing'
     };
