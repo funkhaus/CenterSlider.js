@@ -144,7 +144,7 @@ Triggers the slideshow to move to the next slide. If the slideshow is currently 
 
 ##### cs-goto
 
-Triggers the slideshow to move to a specified slide by index. The `cs-goto` function takes one argument, the 0 based `index` of the intended slide destination. So for example if you wanted bring your slideshow to the second slide, you would do this:
+Triggers the slideshow to move to a specified slide by index. The `cs-goto` function takes one argument, the 0 based `index` of the intended slide destination. So for example if you wanted to bring your slideshow to the second slide, you would do this:
 
 ```js
 $('#slideshow').trigger('cs-goto', 1);
