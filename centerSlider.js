@@ -86,7 +86,7 @@
             sizeSlides();
 
             // trigger previous slide
-            $container.on('prev-slide', function(){
+            $container.on('cs-prev', function(){
 
                 // abort if first slide
                 if ( currentSlide === 0 || transitioning ) return;
@@ -123,9 +123,9 @@
             });
 
             // trigger next slide
-            $container.on('next-slide', function(){
+            $container.on('cs-next', function(){
 
-                // abort if first slide
+                // abort if last slide or transitioning
                 if ( currentSlide === ($slides.length - 1) || transitioning ) return;
 
                 // set incoming and outgoing slides. Fire before event
@@ -160,13 +160,43 @@
 
             });
 
+            // trigger goto event
+            $container.on('cs-goto', function(e, i){
+
+                if ( i < 0 || i > ($slides.length - 1) ) return false;
+
+                var $in = $slides.eq((i));
+                var $out = $slides.eq(currentSlide);
+                if ( typeof settings.before === 'function' ) settings.before($in, $out);
+
+                // update current slide
+                currentSlide = i;
+
+                // set trans
+                transitioning = true;
+
+                // animate
+                $wrapper.stop(true, false).velocity({
+                    translateX: 0 - (currentSlide * slideWidth),
+                    duration: settings.speed
+                }, {
+                    complete: function(){
+                        transitioning = false;
+                        if ( typeof settings.after === 'function' ) settings.after($in, $out);
+                    },
+                    duration: settings.speed,
+                    easing: settings.easing
+                });
+
+            });
+
             // set click listeners if clickNav is set
             if ( settings.clickNavigation ){
                 $container.on('click', '.centerslide-prev ' + settings.object, function(){
-                    $container.trigger('prev-slide');
+                    $container.trigger('cs-prev');
                 });
                 $container.on('click', '.centerslide-next ' + settings.object, function(){
-                    $container.trigger('next-slide');
+                    $container.trigger('cs-next');
                 });
             }
 
@@ -175,11 +205,11 @@
                 $(document).keydown(function(e) {
                     switch(e.which) {
                         case 37: // left
-                            $container.trigger('prev-slide');
+                            $container.trigger('cs-prev');
                             break;
-                
+
                         case 39: // right
-                            $container.trigger('next-slide');
+                            $container.trigger('cs-next');
                             break;
 
                         default: return;

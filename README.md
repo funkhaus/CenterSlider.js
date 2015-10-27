@@ -131,13 +131,21 @@ You can also fire events on the main container after the slideshow has been set 
 var $slideshow = $('#container').centerSlider();
 
 // trigger event
-$slideshow.trigger('next-slide');
+$slideshow.trigger('cs-next');
 ```
 
-##### prev-slide
+##### cs-prev
 
 Triggers the slideshow to move to the previous slide. If the slideshow is currently on the first slide then this event will do nothing.
 
-##### next-slide
+##### cs-next
 
 Triggers the slideshow to move to the next slide. If the slideshow is currently on the last slide then this event will do nothing.
+
+##### cs-goto
+
+Triggers the slideshow to move to a specified slide by index. The `cs-goto` function takes one argument, the 0 based `index` of the intended slide destination. So for example if you wanted bring your slideshow to the second slide, you would do this:
+
+```js
+$('#slideshow').trigger('cs-goto', 1);
+```
